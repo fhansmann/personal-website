@@ -15,6 +15,7 @@ module.exports = {
         alias: {
           "@src": "src",
           "@components": "src/components/index",
+          "@styles": "src/styles/index",
         },
         extensions: [
           "js",

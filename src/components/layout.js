@@ -1,6 +1,9 @@
 import React from "react"
 import { StaticQuery, graphql } from 'gatsby'
 import Particles from 'react-particles-js'
+import { Head } from '@components'
+import { particleConfig } from './particleBg'
+import { GlobalStyle } from '@styles';
 
 // Style of the particles.js background container
 const ParticlesStyle = {
@@ -24,15 +27,12 @@ const Layout = () => (
       }
     `}
 
-    render={() => (
+    render={({site}) => (
       <div id="root">
         <Head metadata={site.siteMetadata} />
         <Particles params={particleConfig} style={ParticlesStyle} />
         <GlobalStyle />
         <div className="container">
-          <Nav />
-          <Social />
-          <Footer />
         </div>
       </div>
     )}
