@@ -1,51 +1,42 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby'
+import Particles from 'react-particles-js'
 
-import Header from "./header"
-import "./layout.css"
+// Style of the particles.js background container
+const ParticlesStyle = {
+  position: 'fixed',
+  width: '100%',
+  height: '100%',
+  zIndex: '-2',
+};
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+const Layout = () => (
+  <StaticQuery
+    query={graphql`
+      query LayoutQuery {
+        site {
+          siteMetadata {
+            title
+            siteUrl
+            description
+          }
         }
       }
-    }
-  `)
+    `}
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+    render={() => (
+      <div id="root">
+        <Head metadata={site.siteMetadata} />
+        <Particles params={particleConfig} style={ParticlesStyle} />
+        <GlobalStyle />
+        <div className="container">
+          <Nav />
+          <Social />
+          <Footer />
+        </div>
       </div>
-    </>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+    )}
+  />
+)
 
 export default Layout
