@@ -17,6 +17,8 @@ module.exports = {
           "@components": "src/components/index",
           "@styles": "src/styles/index",
           "@fonts": "src/fonts",
+          "@utils": "src/utils/index",
+          "@config": "src/config/index",
         },
         extensions: [
           "js",

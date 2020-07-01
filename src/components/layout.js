@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from 'gatsby'
 //import Particles from 'react-particles-js'
-import { Head } from '@components'
+import { Head, Nav } from '@components'
 //import { particleConfig } from './particleBg'
 import { GlobalStyle } from '@styles'
 
@@ -25,6 +25,7 @@ const Layout = () => (
         <Head metadata={site.siteMetadata} />
         <GlobalStyle />
         <div className="container">
+          <Nav />
         </div>
       </div>
     )}
