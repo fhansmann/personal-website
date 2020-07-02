@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { navLinks } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media } from '@styles';
@@ -114,11 +114,6 @@ const Menu = ({ menuOpen, toggleMenu }) => {
       </Sidebar>
     </StyledContainer>
   );
-};
-
-Menu.propTypes = {
-  menuOpen: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Menu;
