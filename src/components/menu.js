@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'gatsby';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { navLinks } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
-const StyledContainer = styled.div`
+const MenuContainer = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -21,10 +21,10 @@ const StyledContainer = styled.div`
   display: none;
   ${media.tablet`display: block;`};
 `;
-const Sidebar = styled.aside`
+const Sidebar = styled.div`
   ${mixins.flexCenter};
   flex-direction: column;
-  background-color: ${colors.lightNavy};
+  background-color: ${colors.white};
   padding: 50px;
   width: 50vw;
   height: 100%;
@@ -42,33 +42,22 @@ const NavLinks = styled.nav`
   width: 100%;
   flex-direction: column;
   text-align: center;
-  color: ${colors.lightestSlate};
 `;
 const NavList = styled.ol`
-  padding: 0;
-  margin: 0;
-  list-style: none;
   width: 100%;
 `;
 const NavListItem = styled.li`
   margin: 0 auto 20px;
   position: relative;
-  font-size: ${fontSizes.lg};
+  font-size: ${fontSizes.large};
   counter-increment: item 1;
   ${media.thone`
     margin: 0 auto 10px;
-    font-size: ${fontSizes.md};
+    font-size: ${fontSizes.medium};
   `};
-  ${media.tiny`font-size: ${fontSizes.smish};`};
-  &:before {
-    display: block;
-    content: '0' counter(item) '.';
-    color: ${colors.green};
-    font-size: ${fontSizes.sm};
-    margin-bottom: 5px;
-  }
+  ${media.tiny`font-size: ${fontSizes.smallish};`};
 `;
-const NavLink = styled(Link)`
+const NavLink = styled(AnchorLink)`
   ${mixins.link};
   padding: 3px 20px 20px;
   width: 100%;
@@ -84,7 +73,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
   const handleMenuClick = e => {
     const target = e.target;
     const isLink = target.hasAttribute('href');
-    const isNotMenu = target.classList && target.classList[0].includes('StyledContainer');
+    const isNotMenu = target.classList && target.classList[0].includes('MenuContainer');
 
     if (isLink || isNotMenu) {
       toggleMenu();
@@ -92,7 +81,7 @@ const Menu = ({ menuOpen, toggleMenu }) => {
   };
 
   return (
-    <StyledContainer
+    <MenuContainer
       menuOpen={menuOpen}
       onClick={handleMenuClick}
       aria-hidden={!menuOpen}
@@ -103,17 +92,23 @@ const Menu = ({ menuOpen, toggleMenu }) => {
             {navLinks &&
               navLinks.map(({ url, name }, i) => (
                 <NavListItem key={i}>
-                  <NavLink to={url}>{name}</NavLink>
+                  <NavLink href={url}>{name}</NavLink>
                 </NavListItem>
               ))}
           </NavList>
-          <ResumeLink href="/resume.pdf" target="_blank" rel="nofollow noopener noreferrer">
-            Resume
+          <ResumeLink href="https://docs.google.com/document/d/1q_plPFS4LCYmMiEWOQxPv3hXa509E2JVjb7Y3hhAmXk/export?format=pdf"
+            target="_blank" rel="nofollow noopener noreferrer">
+            Hello World
           </ResumeLink>
         </NavLinks>
       </Sidebar>
-    </StyledContainer>
+    </MenuContainer>
   );
+};
+
+Menu.propTypes = {
+  menuOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Menu;

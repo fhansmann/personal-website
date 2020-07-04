@@ -27,11 +27,11 @@ const mixins = {
     color: inherit;
     position: relative;
     transition: ${theme.transition};
-    cursor: pointer;
+    cursor: wait;
     &:hover,
-    &:active,
+    &:active, 
     &:focus {
-      color: ${colors.dark};
+      color: ${colors.orange};
       outline: 0;
     }
   `,

@@ -5,11 +5,11 @@ module.exports = {
 
     navLinks: [
     {
-        name: 'About',
+        name: 'About Me',
         url: '/#about',
     },
     {
-        name: 'Experience',
+        name: 'Digital Garden',
         url: '/#jobs',
     },
     {
