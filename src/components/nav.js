@@ -1,11 +1,9 @@
 // import React, { Component } from 'react'
 import React, { useState, useEffect } from 'react'
-import Helmet from 'react-helmet'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { throttle } from '@utils'
 import { navLinks, navHeight } from '@config'
-//import { Menu } from '@components' - re import menu component later
 import styled from 'styled-components'
 import { theme, mixins, media } from '@styles'
 const { colors, fontSizes, fonts } = theme
@@ -58,12 +56,14 @@ const Hamburger = styled.div`
     display: none;
     ${media.tablet`display: flex;`};
     `;
+
 const HamburgerBox = styled.div`
     position: relative;
     display: inline-block;
     width: ${theme.hamburgerWidth}px;
     height: 24px;
     `;
+
 const HamburgerInner = styled.div`
     background-color: ${colors.dark};
     position: absolute;
@@ -108,16 +108,19 @@ const HamburgerInner = styled.div`
     transition: ${props => (props.menuOpen ? theme.hamAfterActive : theme.hamAfter)};
     }
     `;
+
 const NavLinks = styled.div`
     display: flex;
     align-items: center;
     ${media.tablet`display: none;`};
     `;
+
 const NavList = styled.ol`
     div {
     ${mixins.flexBetween};
     }
-`;
+    `;
+
 const NavListItem = styled.li`
     margin: 0 10px;
     position: relative;
@@ -128,12 +131,11 @@ const NavListItem = styled.li`
     font-size: ${fontSizes.xsmall};
     }
     `;
+
 const NavLink = styled(AnchorLink)`
     color: ${colors.dark};
     padding: 12px 10px;
     `;
-
-const DELTA = 5;
 
 const Nav = () => {
 
@@ -141,25 +143,6 @@ const Nav = () => {
     const [menuOpen, SetMenuOpen] = useState(false)
     const [scrollDirection, SetScrollDirection] = useState('none')
     const [lastScrollTop, SetLastScrollTop] = useState(0)
-
-    useEffect( () => {
-
-        setTimeout( () => SetIsMounted(true), 100)
-
-        window.addEventListener('scroll', () => throttle(handleScroll()))
-        window.addEventListener('resize', () => throttle(handleResize()))
-        window.addEventListener('keydown', (e) => handleKeydown(e))
-    
-        return () => {
-
-            SetIsMounted(false)
-
-            window.removeEventListener('scroll', () => handleScroll())
-            window.removeEventListener('resize', () => handleResize())
-            window.removeEventListener('keydown', (e) => handleKeydown(e))
-        }
-    
-    }, [] )
 
     const toggleMenu = () => SetMenuOpen(!menuOpen);
 
@@ -172,12 +155,57 @@ const Nav = () => {
     const handleKeydown = (e) => {
         if (!menuOpen) {
             return
-    }
+        }
 
-    if (e.which === 27 || e.key === 'Escape') {
+        if (e.which === 27 || e.key === 'Escape') {
             toggleMenu()
         }
     }
+
+    const handleScroll = () => {
+        const fromTop = window.scrollY
+        const DELTA = 10
+
+        if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
+            return
+        }
+
+        if (fromTop < DELTA) {
+            SetScrollDirection('none')
+
+        } else if (fromTop > lastScrollTop && fromTop > navHeight) {
+            if (scrollDirection !== 'down') {
+                SetScrollDirection('down')
+
+        }
+
+        } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
+            if (scrollDirection !== 'up') {
+            SetScrollDirection('up')
+        }
+        }
+
+        SetLastScrollTop(fromTop)
+    }
+
+    useEffect( () => {
+
+        setTimeout( () => SetIsMounted(true), 100)
+
+        window.addEventListener('resize', () => throttle(handleResize()))
+        window.addEventListener('keydown', (e) => handleKeydown(e))
+        window.addEventListener('scroll', () => throttle(handleScroll()))
+    
+        return () => {
+
+            SetIsMounted(false)
+
+            window.removeEventListener('resize', () => handleResize())
+            window.removeEventListener('keydown', (e) => handleKeydown(e))
+            window.removeEventListener('scroll', () => handleScroll())
+        }
+    
+    }, )
 
     return (
         <NavContainer scrollDirection={scrollDirection}>
@@ -185,9 +213,9 @@ const Nav = () => {
                 <TransitionGroup>
                     {isMounted && (
                         <CSSTransition classNames="fade" timeout={3000}>
-                        <Hamburger onClick={this.toggleMenu}>
+                        <Hamburger onClick={toggleMenu}>
                             <HamburgerBox>
-                            <HamburgerInner menuOpen={menuOpen} />
+                                <HamburgerInner menuOpen={menuOpen} />
                             </HamburgerBox>
                         </Hamburger>
                         </CSSTransition>
