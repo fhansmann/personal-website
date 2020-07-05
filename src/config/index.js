@@ -9,11 +9,11 @@ module.exports = {
         url: '/#about',
     },
     {
-        name: 'Digital Garden',
-        url: '/#jobs',
+        name: 'Writing',
+        url: '/#writing',
     },
     {
-        name: 'Work',
+        name: 'Projects',
         url: '/#projects',
     },
     {

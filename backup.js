@@ -1,5 +1,4 @@
-// import React, { Component } from 'react'
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
@@ -135,83 +134,120 @@ const NavLink = styled(AnchorLink)`
 
 const DELTA = 5;
 
-const Nav = () => {
 
-    const [isMounted, SetIsMounted] = useState(false)
-    const [menuOpen, SetMenuOpen] = useState(false)
-    const [scrollDirection, SetScrollDirection] = useState('none')
-    const [lastScrollTop, SetLastScrollTop] = useState(0)
+const Nav = () =>
 
-    useEffect( () => {
 
-        setTimeout( () => SetIsMounted(true), 100)
 
-        window.addEventListener('scroll', () => throttle(handleScroll()))
-        window.addEventListener('resize', () => throttle(handleResize()))
-        window.addEventListener('keydown', (e) => handleKeydown(e))
-    
-        return () => {
+class Nav extends Component {
+    state = {
+    isMounted: false,
+    menuOpen: false,
+    scrollDirection: 'none',
+    lastScrollTop: 0,
+    };
 
-            SetIsMounted(false)
+    componentDidMount() {
+    setTimeout(() => this.setState({ isMounted: true }), 100);
 
-            window.removeEventListener('scroll', () => handleScroll())
-            window.removeEventListener('resize', () => handleResize())
-            window.removeEventListener('keydown', (e) => handleKeydown(e))
-        }
-    
-    }, [] )
-
-    const toggleMenu = () => SetMenuOpen(!menuOpen);
-
-    const handleResize = () => {
-        if (window.innerWidth > 768 && menuOpen) {
-            toggleMenu()
-            }
+    window.addEventListener('scroll', () => throttle(this.handleScroll()));
+    window.addEventListener('resize', () => throttle(this.handleResize()));
+    window.addEventListener('keydown', e => this.handleKeydown(e));
     }
 
-    const handleKeydown = (e) => {
-        if (!menuOpen) {
-            return
+    componentWillUnmount() {
+    this.setState({ isMounted: false });
+
+    window.removeEventListener('scroll', () => this.handleScroll());
+    window.removeEventListener('resize', () => this.handleResize());
+    window.removeEventListener('keydown', e => this.handleKeydown(e));
+    }
+
+    toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });
+
+    handleScroll = () => {
+    const { isMounted, menuOpen, scrollDirection, lastScrollTop } = this.state;
+    const fromTop = window.scrollY;
+
+    // Make sure they scroll more than DELTA
+    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
+        return;
+    }
+
+    if (fromTop < DELTA) {
+        this.setState({ scrollDirection: 'none' });
+    } else if (fromTop > lastScrollTop && fromTop > navHeight) {
+        if (scrollDirection !== 'down') {
+        this.setState({ scrollDirection: 'down' });
+        }
+    } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
+        if (scrollDirection !== 'up') {
+        this.setState({ scrollDirection: 'up' });
+        }
+    }
+
+    this.setState({ lastScrollTop: fromTop });
+    };
+
+    handleResize = () => {
+    if (window.innerWidth > 768 && this.state.menuOpen) {
+        this.toggleMenu();
+    }
+    };
+
+    handleKeydown = e => {
+    if (!this.state.menuOpen) {
+        return;
     }
 
     if (e.which === 27 || e.key === 'Escape') {
-            toggleMenu()
-        }
+        this.toggleMenu();
     }
+    };
+
+    render() {
+    const { isMounted, menuOpen, scrollDirection } = this.state;
 
     return (
         <NavContainer scrollDirection={scrollDirection}>
-            <Navbar>
+
+        <Helmet>
+            <body className={menuOpen ? 'blur' : ''} />
+        </Helmet>
+        <Navbar>
+
+            <TransitionGroup>
+            {isMounted && (
+                <CSSTransition classNames="fade" timeout={3000}>
+                <Hamburger onClick={this.toggleMenu}>
+                    <HamburgerBox>
+                    <HamburgerInner menuOpen={menuOpen} />
+                    </HamburgerBox>
+                </Hamburger>
+                </CSSTransition>
+            )}
+            </TransitionGroup>
+
+            <NavLinks>
+            <NavList>
                 <TransitionGroup>
-                    {isMounted && (
-                        <CSSTransition classNames="fade" timeout={3000}>
-                        <Hamburger onClick={this.toggleMenu}>
-                            <HamburgerBox>
-                            <HamburgerInner menuOpen={menuOpen} />
-                            </HamburgerBox>
-                        </Hamburger>
-                        </CSSTransition>
-                    )}
+                {isMounted &&
+                    navLinks &&
+                    navLinks.map(({ url, name }, i) => (
+                    <CSSTransition key={i} classNames="fadedown" timeout={3000}>
+                        <NavListItem key={i} style={{ transitionDelay: `${i * 100}ms` }}>
+                        <NavLink href={url}>{name}</NavLink>
+                    </NavListItem>
+                    </CSSTransition>
+                    ))}
                 </TransitionGroup>
+            </NavList>
+            </NavLinks>
+        </Navbar>
 
-                <NavLinks>
-                    <NavList>
-                        <TransitionGroup>
-                        {isMounted &&
-                            navLinks &&
-                            navLinks.map(({ url, name }, i) => (
-                            <CSSTransition key={i} classNames="fadedown" timeout={3000}>
-                                <NavListItem key={i} style={{ transitionDelay: `${i * 100}ms` }}>
-                                <NavLink href={url}>{name}</NavLink>
-                            </NavListItem>
-                            </CSSTransition>
-                            ))}
-                        </TransitionGroup>
-                    </NavList>
-                </NavLinks>
-            </Navbar>
         </NavContainer>
-    )
-}
+    );
+    }
+    }
 
-export default Nav
+export default Nav;
