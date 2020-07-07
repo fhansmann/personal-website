@@ -14,8 +14,6 @@ const Navbar = styled.nav`
     top: 10px;
     background-color: ${colors.white};
     width: 100%;
-    color: ${colors.lightestSlate};
-    font-family: ${fonts.SFMono};
     `
 const NavList = styled.ol`
     div {
@@ -25,9 +23,11 @@ const NavList = styled.ol`
     }
     `
 const NavListItem = styled.li`
-    margin: 0 8px;
+    margin: 0 10px;
     position: relative;
     font-size: ${fontSizes.medium};
+    color: ${colors.lightestSlate};
+    font-family: ${fonts.SFMono};
     `
 const NavLink = styled(AnchorLink)`
     color: ${colors.dark};

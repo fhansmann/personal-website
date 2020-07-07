@@ -214,10 +214,9 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     transition: ${theme.transition};
     cursor: pointer;
-
     &:hover,
     &:focus {
-      color: ${colors.blue};
+      color: ${colors.slate};
       outline: 0;
     }
   }
