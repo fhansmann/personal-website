@@ -19,6 +19,7 @@ module.exports = {
           "@fonts": "src/fonts",
           "@utils": "src/utils/index",
           "@config": "src/config/index",
+          "@icons": "src/icons/index" 
         },
         extensions: [
           "js",

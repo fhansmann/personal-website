@@ -30,4 +30,32 @@ module.exports = {
         darkNavy: '#020c1b',
     },
 
+    socialMedia: [
+        {
+        name: 'Github',
+        url: 'https://github.com/m-abdelwahab',
+        handle: 'm-abdelwahab',
+    },
+    {
+        name: 'Linkedin',
+        url: 'https://www.linkedin.com/in/m-abdelwahab-dev',
+        handle: 'm-abdelwahab-dev',
+    },
+    {
+        name: 'Twitter',
+        url: 'https://twitter.com/thisismahmoud_',
+        handle: 'thisismahmoud_',
+    },
+    {
+        name: 'Mail',
+        url: 'mailto:mahmoud3799@gmail.com',
+        handle: 'mahmoud3799@gmail.com',
+    },
+    {
+        name: 'Medium',
+        url: 'https://medium.com/@thisismahmoud',
+        handle: 'thisismahmoud',
+    },
+    ],
+
 }

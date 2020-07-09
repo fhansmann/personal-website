@@ -50,7 +50,6 @@ const useViewport = () => {
 const useOnClickOutside = (ref, handler) => {
 
     useEffect(() => {
-        
         const listener = (e) => {
         if (!ref.current || ref.current.contains(e.target)) {
             return
@@ -58,7 +57,6 @@ const useOnClickOutside = (ref, handler) => {
         handler(e)
         }
         document.addEventListener('mousedown', listener);
-    
         return () => {
         document.removeEventListener('mousedown', listener);
         }
@@ -99,13 +97,13 @@ const Nav = () => {
             </TransitionGroup>
         </NavList>
     </Navbar>
+
     :
+    
     <Navbar>
-        <NavList>
-            <div ref={node}>
-                <Burger open={open} setOpen={setOpen} />
-                <Menu open={open} setOpen={setOpen} />
-            </div>
+        <NavList ref={node}>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
         </NavList>
     </Navbar>
     )

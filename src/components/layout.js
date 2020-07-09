@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from 'gatsby'
-import { Head, Nav } from '@components'
+import { Head, Nav, Social } from '@components'
 import { GlobalStyle } from '@styles'
 
 
@@ -23,6 +23,7 @@ const Layout = () => (
         <Head metadata={site.siteMetadata} />
         <GlobalStyle />
         <Nav />
+        <Social />
       </div>
     )}
   />

@@ -22,12 +22,13 @@ const StyledMenu = styled.nav`
     }
     `
 
-const Menu = ({ open, ...props }) => {
+const Menu = ({ open }) => {
 
     return (
-    <StyledMenu open={open} {...props}>
-        {navLinks.map(({ url, name }, i) => (
-            <NavListItem key={i} style={{ transitionDelay: `${i * 100}ms` }}>
+    <StyledMenu open={open} >
+        {   
+            navLinks.map(({ url, name }, i) => (
+            <NavListItem key={i}>
                 <NavLink href={url}>{name}</NavLink>
             </NavListItem>
     ))}
