@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { theme } from '@styles'
+const { colors } = theme
 
 const StyledBurger = styled.button`
     position: absolute;
@@ -8,7 +10,7 @@ const StyledBurger = styled.button`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 2rem;
+    width:  2rem;
     height: 2rem;
     background: transparent;
     border: none;
@@ -18,8 +20,8 @@ const StyledBurger = styled.button`
 
     span {
     width: 2rem;
-    height: 0.25rem;
-    background: ${({ theme, open }) => open ? theme.primaryDark : theme.primaryLight};
+    height: 0.2rem;
+    background-color: ${colors.dark};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -40,14 +42,10 @@ const StyledBurger = styled.button`
     }
 `;
 
-export const Burger = ({ open, setOpen, ...props }) => {
-
-    const isExpanded = open ? true : false;
+const Burger = ({ open, setOpen, ...props }) => {
 
     return (
     <StyledBurger 
-        aria-label="Toggle menu" 
-        aria-expanded={isExpanded} 
         open={open} 
         onClick={() => setOpen(!open)} {...props}>
         <span />
@@ -58,3 +56,4 @@ export const Burger = ({ open, setOpen, ...props }) => {
 }
 
 
+export default Burger

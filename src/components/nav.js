@@ -24,14 +24,13 @@ const NavList = styled.ol`
         align-items: center;
     }
     `
-const NavListItem = styled.li`
+export const NavListItem = styled.li`
     margin: 0 10px;
     position: relative;
     font-size: ${fontSizes.medium};
-    color: ${colors.lightestSlate};
     font-family: ${fonts.SFMono};
     `
-const NavLink = styled(AnchorLink)`
+export const NavLink = styled(AnchorLink)`
     color: ${colors.dark};
     padding: 12px 10px;
     `
@@ -101,10 +100,14 @@ const Nav = () => {
         </NavList>
     </Navbar>
     :
-    <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-    </div>
+    <Navbar>
+        <NavList>
+            <div ref={node}>
+                <Burger open={open} setOpen={setOpen} />
+                <Menu open={open} setOpen={setOpen} />
+            </div>
+        </NavList>
+    </Navbar>
     )
 }
 
