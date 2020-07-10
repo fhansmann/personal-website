@@ -1,10 +1,37 @@
 import React from "react"
-import {Layout} from '@components'
+import { graphql } from 'gatsby'
+import {Layout, Hero} from '@components'
+import styled from 'styled-components'
+import { Main } from '@styles';
 
-const IndexPage = () => (
+const MainContainer = styled(Main)`
+  counter-reset: section;
+`
+
+
+const IndexPage = ({data}) => (
   <Layout>
-
+    <MainContainer id="content">
+      <Hero data={data.hero.edges}/>
+    </MainContainer>
   </Layout>
 )
 
-export default IndexPage
+export default IndexPage 
+
+export const data = graphql`
+  {
+    hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
+    edges {
+      node {
+          frontmatter{
+            title
+            name
+            subtitle
+          }
+          html
+        }
+      }
+    }
+  }
+`

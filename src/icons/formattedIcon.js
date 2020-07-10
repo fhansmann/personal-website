@@ -2,21 +2,18 @@ import React from 'react'
 
 import {
   IconGithub,
-  IconInstagram,
   IconTwitter,
-  IconMail,
+  IconInstagram,
 } from '@icons'
 
 const FormattedIcon = ({ name }) => {
   switch (name) {
     case 'Github':
       return <IconGithub />
-    case 'Instagram':
-      return <IconInstagram />
     case 'Twitter':
       return <IconTwitter />
-    case 'Mail':
-      return <IconMail />
+    case 'Instagram':
+      return <IconInstagram />
     default:
       return <IconGithub />
   }

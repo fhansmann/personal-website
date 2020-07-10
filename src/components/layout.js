@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from 'gatsby'
-import { Head, Nav, Social } from '@components'
+import { Head, Nav, Social, Footer } from '@components'
 import { GlobalStyle } from '@styles'
 
 
@@ -24,6 +24,7 @@ const Layout = () => (
         <GlobalStyle />
         <Nav />
         <Social />
+        <Footer />
       </div>
     )}
   />

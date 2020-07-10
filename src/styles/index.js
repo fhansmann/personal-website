@@ -3,6 +3,7 @@ import GlobalStyle from './GlobalStyle'
 import media from './media'
 import fonts from './fonts'
 import mixins from './mixins'
+import Main from './Main'
 
 
 export {
@@ -11,4 +12,5 @@ export {
   media,
   fonts,
   mixins,
+  Main,
 };

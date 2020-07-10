@@ -4,6 +4,8 @@ import Nav from './nav'
 import Menu from './menu'
 import Burger from './burger'
 import Social from './social'
+import Footer from './footer'
+import Hero from './hero'
 
 
 export {
@@ -12,5 +14,7 @@ export {
   Nav,
   Menu,
   Burger,
-  Social
+  Social,
+  Footer,
+  Hero,
 }

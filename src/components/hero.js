@@ -1,58 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import styled from 'styled-components';
-import { theme, mixins, media, Section } from '@styles';
-const { colors, fonts } = theme;
-import TextLoop from 'react-text-loop';
+import { email } from '@config'
+import styled from 'styled-components'
+import { theme, mixins } from '@styles'
+const { colors, fontSizes, fonts, navDelay, loaderDelay } = theme
 
-const HeroContainer = styled(Section)`
+const StyledContainer = styled.div`
   ${mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  ${media.tablet`padding-top: 150px;`};
-  div {
-    width: 100%;
-  }
-`;
-const Hi = styled.h1`
-  color: ${colors.dark};
+`
+const StyledOverline = styled.h1`
+  color: ${colors.green};
   margin: 0 0 20px 3px;
+  font-size: ${fontSizes.md};
   font-family: ${fonts.SFMono};
   font-weight: normal;
-  ${media.desktop`font-size: 60px;`};
-  ${media.tablet`font-size: 40px;`};
-  ${media.phablet`font-size: 30px;`};
-  ${media.phone`font-size: 20px;`};
-`;
-const Name = styled.h2`
-  color: ${colors.dark};
+`
+const StyledTitle = styled.h2`
   font-size: 80px;
   line-height: 1.1;
   margin: 0;
-  ${media.desktop`font-size: 70px;`};
-  ${media.tablet`font-size: 60px;`};
-  ${media.phablet`font-size: 50px;`};
-  ${media.phone`font-size: 40px;`};
-`;
-const Subtitle = styled.h3`
-  font-size: 150px;
+`
+const StyledSubtitle = styled.h3`
+  font-size: 80px;
   line-height: 1.1;
-  color: ${colors.dark};
-  ${media.desktop`font-size: 100px;`};
-  ${media.tablet`font-size: 60px;`};
-  ${media.phablet`font-size: 50px;`};
-  ${media.phone`font-size: 40px;`};
-`;
-const Blurb = styled.div`
+  color: ${colors.slate};
+`
+const StyledDescription = styled.div`
   margin-top: 25px;
   width: 50%;
   max-width: 500px;
   a {
     ${mixins.inlineLink};
   }
-`;
-const EmailLink = styled.a`
+`
+const StyledEmailLink = styled.a`
   ${mixins.bigButton};
   margin-top: 50px;
 `;
@@ -61,55 +45,48 @@ const Hero = ({ data }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 1000);
+    const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [])
 
   const { frontmatter, html } = data[0].node;
 
   const one = () => (
-    <Hi style={{ transitionDelay: '100ms' }}>
-      <TextLoop springConfig={{ stiffness: 180, damping: 8 }}>
-        <span>Hi! I'm</span>
-        <span>Salut! Je suis </span>
-        <span> مرحباَ أنا</span>
-        <span>¡Hola! Soy</span>
-        <span>Hallo! Ich bin</span>
-      </TextLoop>
-    </Hi>
-  );
-
-  const two = () => <Name style={{ transitionDelay: '200ms' }}>{frontmatter.name}.</Name>;
+    <StyledOverline style={{ transitionDelay: '100ms' }}>{frontmatter.title}</StyledOverline>
+  )
+  const two = () => (
+    <StyledTitle style={{ transitionDelay: '200ms' }}>{frontmatter.name}.</StyledTitle>
+  )
   const three = () => (
-    <Subtitle style={{ transitionDelay: '300ms' }}>{frontmatter.subtitle}</Subtitle>
-  );
+    <StyledSubtitle style={{ transitionDelay: '300ms' }}>{frontmatter.subtitle}</StyledSubtitle>
+  )
   const four = () => (
-    <Blurb style={{ transitionDelay: '400ms' }} dangerouslySetInnerHTML={{ __html: html }} />
-  );
+    <StyledDescription
+      style={{ transitionDelay: '400ms' }}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
   const five = () => (
     <div style={{ transitionDelay: '500ms' }}>
-      <EmailLink href={`mailto:${email}`}>Get In Touch</EmailLink>
+      <StyledEmailLink href={`mailto:${email}`}>Get In Touch</StyledEmailLink>
     </div>
-  );
+  )
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, four, five]
 
   return (
-    <HeroContainer>
-      <TransitionGroup>
+    <StyledContainer>
+      <TransitionGroup component={null}>
         {isMounted &&
           items.map((item, i) => (
-            <CSSTransition key={i} classNames="fadeup" timeout={3000}>
+            <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
               {item}
             </CSSTransition>
           ))}
       </TransitionGroup>
-    </HeroContainer>
-  );
-};
+    </StyledContainer>
+  )
+}
 
-Hero.propTypes = {
-  data: PropTypes.array.isRequired,
-};
 
-export default Hero;
+export default Hero
