@@ -4,7 +4,7 @@ import { Head, Nav, Social, Footer } from '@components'
 import { GlobalStyle } from '@styles'
 
 
-const Layout = () => (
+const Layout = ({children}) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -24,6 +24,9 @@ const Layout = () => (
         <GlobalStyle />
         <Nav />
         <Social />
+        <div>
+          {children}
+        </div>
         <Footer />
       </div>
     )}

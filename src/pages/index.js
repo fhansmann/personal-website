@@ -2,24 +2,24 @@ import React from "react"
 import { graphql } from 'gatsby'
 import {Layout, Hero} from '@components'
 import styled from 'styled-components'
-import { Main } from '@styles';
+import { Main } from '@styles'
+
 
 const MainContainer = styled(Main)`
   counter-reset: section;
-`
-
+`;
 
 const IndexPage = ({data}) => (
   <Layout>
-    <MainContainer id="content">
-      <Hero data={data.hero.edges}/>
-    </MainContainer>
+      <MainContainer>
+        <Hero data={data.hero.edges}/>
+      </MainContainer>
   </Layout>
 )
 
 export default IndexPage 
 
-export const data = graphql`
+export const pageQuery = graphql`
   {
     hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
     edges {
@@ -35,3 +35,4 @@ export const data = graphql`
     }
   }
 `
+
