@@ -17,7 +17,7 @@ module.exports = {
           "@components": "src/components/index",
           "@styles": "src/styles/index",
           "@fonts": "src/fonts",
-          "@utils": "src/utils/index",
+          "@utils": "src/utils",
           "@config": "src/config/index",
           "@icons": "src/icons/index" 
         },
@@ -45,5 +45,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
+    `gatsby-transformer-sharp`, 
+    `gatsby-plugin-sharp`,
   ]
 }

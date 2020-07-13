@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { socialMedia } from '@config'
 import { FormattedIcon } from '@icons'
 import styled from 'styled-components'
@@ -11,7 +11,10 @@ const SocialContainer = styled.div`
     position: fixed;
     bottom: 0;
     left: 40px;
-    color: ${colors.dark};
+    color: ${colors.darkSlateGrey};
+    @media only screen (max-width: 768px){
+    display: none;
+    }
 `
 
 const StyledList = styled.ul`
@@ -28,7 +31,7 @@ const StyledList = styled.ul`
     width: 1px;
     height: 130px;
     margin: 0 auto;
-    background-color: ${colors.lightGrey};
+    background-color: ${colors.darkSlateGrey};
     }
 
     li:last-of-type {
@@ -48,7 +51,24 @@ const StyledLink = styled.a`
     }
 `;
 
-const Social = () => (
+const useViewport = () => {
+    const [width, setWidth] = useState(window.innerWidth)
+    
+    useEffect(() => {
+        const handleWindowResize = () => setWidth(window.innerWidth)
+        window.addEventListener("resize", handleWindowResize)
+        return () => window.removeEventListener("resize", handleWindowResize)
+    }, []);
+
+    return { width };
+    }
+
+const Social = () => {
+
+    const { width } = useViewport()
+    const breakpoint = 768
+
+    return ( width > breakpoint ?
     <SocialContainer>
         <StyledList>
         {socialMedia &&
@@ -65,6 +85,10 @@ const Social = () => (
             ))}
         </StyledList>
     </SocialContainer>
-)
+    :
+    <>
 
+    </>
+)
+}
 export default Social

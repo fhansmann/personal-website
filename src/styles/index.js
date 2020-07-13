@@ -4,6 +4,7 @@ import media from './media'
 import fonts from './fonts'
 import mixins from './mixins'
 import Main from './Main'
+import Heading from './Heading'
 
 
 export {
@@ -13,4 +14,5 @@ export {
   fonts,
   mixins,
   Main,
+  Heading,
 };

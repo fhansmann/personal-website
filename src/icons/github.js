@@ -25,6 +25,7 @@ const IconGithub = () => (
           C438.536,184.851,428.728,148.168,409.132,114.573z"
     />
   </svg>
+
 );
 
 export default IconGithub;

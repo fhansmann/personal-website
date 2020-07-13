@@ -6,6 +6,7 @@ import Burger from './burger'
 import Social from './social'
 import Footer from './footer'
 import Hero from './hero'
+import About from './about'
 
 
 export {
@@ -17,4 +18,5 @@ export {
   Social,
   Footer,
   Hero,
+  About,
 }

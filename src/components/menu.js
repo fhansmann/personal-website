@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { navLinks } from '@config'
 import { NavListItem, NavLink } from "./nav"
+import { theme } from '@styles'
+const { colors } = theme
 
 const StyledMenu = styled.nav`
     display: flex;
@@ -14,6 +16,7 @@ const StyledMenu = styled.nav`
     position: absolute;
     top: 0;
     right: 0;
+    background-color: ${colors.white};
     transition: transform 0.5s ease-in-out;
     }
 

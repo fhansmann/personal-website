@@ -37,7 +37,6 @@ const Footer = () => (
             target="_blank"
             rel="nofollow noopener noreferrer">
             <BottomText>Built by Florian Hansmann</BottomText>
-            <BottomText>Thanks for stopping by!</BottomText>
             </GithubLink>
         </Copy>
     </FooterContainer>

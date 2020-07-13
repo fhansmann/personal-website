@@ -31,7 +31,7 @@ export const NavListItem = styled.li`
     font-family: ${fonts.SFMono};
     `
 export const NavLink = styled(AnchorLink)`
-    color: ${colors.dark};
+    color: ${colors.darkSlateGrey};
     padding: 12px 10px;
     `
 
