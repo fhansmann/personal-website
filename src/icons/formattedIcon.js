@@ -4,8 +4,8 @@ import {
   IconGithub,
   IconTwitter,
   IconInstagram,
-  IconCSS,
-  IconHTML,
+  IconFolder,
+  IconExternal,
 } from '@icons'
 
 const FormattedIcon = ({ name }) => {
@@ -16,10 +16,10 @@ const FormattedIcon = ({ name }) => {
       return <IconTwitter />
     case 'Instagram':
       return <IconInstagram />
-    case 'CSS':
-      return <IconCSS />
-    case 'HTML':
-      return <IconHTML />
+    case 'External':
+      return <IconExternal />
+    case 'Folder':
+      return <IconFolder />
     default:
       return <IconGithub />
   }

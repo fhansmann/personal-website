@@ -90,8 +90,8 @@ const mixins = {
 
   bigButton: css`
     color: ${colors.white};
-    background-color: ${colors.dark};
-    border: 1px solid ${colors.dark};
+    background-color: ${colors.white};
+    border: 1px solid ${colors.green};
     border-radius: ${theme.borderRadius};
     padding: 1.25rem 1.75rem;
     font-size: ${fontSizes.small};
@@ -104,7 +104,7 @@ const mixins = {
     &:focus,
     &:active {
       background-color: ${colors.white};
-      color: ${colors.dark};
+      color: ${colors.darkNavy};
     }
     &:after {
       display: none !important;
@@ -119,12 +119,12 @@ const mixins = {
   `,
 
   boxShadow: css`
-    box-shadow: 0 10px 30px -15px ${colors.shadowNavy};
+    box-shadow: 0 10px 30px -15px ${colors.lightSlate};
     transition: ${theme.transition};
 
     &:hover,
     &:focus {
-      box-shadow: 0 20px 30px -15px ${colors.shadowNavy};
+      box-shadow: 0 20px 30px -15px ${colors.lightSlate};
     }
   `,
 };

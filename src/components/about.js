@@ -31,15 +31,15 @@ const Skill = styled.li`
     margin-bottom: 10px;
     padding-left: 20px;
     font-family: ${fonts.SFMono};
-    font-size: 15px;
+    font-size: 13px;
     color: ${colors.slate};
     &:before {
-    content: '▹';
-    position: absolute;
-    left: 0;
-    color: ${colors.green};
-    font-size: ${fontSizes.sm};
-    line-height: 12px;
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: ${colors.green};
+        font-size: ${fontSizes.sm};
+        line-height: 12px;
     }
 `
 const StyledPic = styled.div`

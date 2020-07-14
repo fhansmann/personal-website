@@ -2,14 +2,14 @@ import IconGithub from './github';
 import IconInstagram from './instagram';
 import IconTwitter from './twitter';
 import FormattedIcon from './formattedIcon';
-import IconCSS from './css';
-import IconHTML from './html';
+import IconFolder from './folder'
+import IconExternal from './external'
 
 export {
   IconGithub,
   IconInstagram,
   IconTwitter,
   FormattedIcon,
-  IconCSS,
-  IconHTML,
+  IconFolder,
+  IconExternal,
 };

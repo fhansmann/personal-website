@@ -7,6 +7,9 @@ import Social from './social'
 import Footer from './footer'
 import Hero from './hero'
 import About from './about'
+import Projects from './projects'
+import Contact from './contact'
+
 
 
 export {
@@ -19,4 +22,6 @@ export {
   Footer,
   Hero,
   About,
+  Projects,
+  Contact,
 }

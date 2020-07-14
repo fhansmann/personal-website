@@ -5,6 +5,7 @@ import fonts from './fonts'
 import mixins from './mixins'
 import Main from './Main'
 import Heading from './Heading'
+import Button from './Button'
 
 
 export {
@@ -15,4 +16,5 @@ export {
   mixins,
   Main,
   Heading,
+  Button,
 };

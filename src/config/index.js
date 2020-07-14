@@ -47,16 +47,6 @@ module.exports = {
     },
     ],
 
-    devTools: [
-        {
-            name: 'CSS',
-        },
-    
-        {
-            name: 'HTML',
-        },
-        ],
-
     srConfig: (delay = 200) => ({
         origin: 'bottom',
         distance: '20px',
