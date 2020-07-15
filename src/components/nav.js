@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { navLinks } from '@config'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { Link } from 'gatsby';
 import styled from 'styled-components'
 import { theme } from '@styles'
 import { Burger, Menu } from '@components'
 const { colors, fontSizes, fonts } = theme
-
 
 const Navbar = styled.nav`
     display: flex;
     justify-content: flex-end;
     align-items: center;
     position: fixed;
-    top: 10px;
+    padding-top: 10px;
     background-color: ${colors.white};
     width: 100%;
+    z-index: 10;
     `
 const NavList = styled.ol`
     div {
@@ -30,7 +30,7 @@ export const NavListItem = styled.li`
     font-size: ${fontSizes.medium};
     font-family: ${fonts.SFMono};
     `
-export const NavLink = styled(AnchorLink)`
+export const NavLink = styled(Link)`
     color: ${colors.darkSlateGrey};
     padding: 12px 10px;
     `
@@ -63,7 +63,7 @@ const useOnClickOutside = (ref, handler) => {
     },
     [ref, handler],
     )
-    }
+    } 
 
 const Nav = () => {
 
@@ -90,7 +90,7 @@ const Nav = () => {
                 navLinks.map(({ url, name }, i) => (
                 <CSSTransition key={i} classNames="fadedown" timeout={3000}>
                     <NavListItem key={i} style={{ transitionDelay: `${i * 100}ms` }}>
-                        <NavLink href={url}>{name}</NavLink>
+                        <NavLink to ={url}>{name}</NavLink>
                     </NavListItem>
                 </CSSTransition>
                 ))}

@@ -18,6 +18,7 @@ const StyledMenu = styled.nav`
     right: 0;
     background-color: ${colors.white};
     transition: transform 0.5s ease-in-out;
+    z-index: 10;
     }
 
     a {

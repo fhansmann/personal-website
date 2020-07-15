@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from 'react'
 import sr from '@utils/sr'
 import { srConfig, email } from '@config'
 import styled from 'styled-components'
-import { theme, mixins, Heading } from '@styles'
+import { theme, mixins, Heading, Section } from '@styles'
 const { colors, fontSizes, fonts } = theme
 
-const StyledContainer = styled.div`
-
+const StyledContainer = styled(Section)`
   text-align: center;
   max-width: 600px;
   margin: 100px auto 100px;

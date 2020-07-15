@@ -5,7 +5,7 @@ const { colors } = theme
 
 const StyledBurger = styled.button`
     position: absolute;
-    top: 0.5rem;
+    top: 1rem;
     right: 2rem;
     display: flex;
     flex-direction: column;
@@ -16,12 +16,12 @@ const StyledBurger = styled.button`
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 11;
 
     span {
     width: 2rem;
     height: 0.2rem;
-    background-color: ${colors.lightGrey};
+    background-color: ${colors.darkSlateGrey};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

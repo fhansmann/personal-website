@@ -6,6 +6,7 @@ import mixins from './mixins'
 import Main from './Main'
 import Heading from './Heading'
 import Button from './Button'
+import Section from './section'
 
 
 export {
@@ -17,4 +18,5 @@ export {
   Main,
   Heading,
   Button,
+  Section,
 };

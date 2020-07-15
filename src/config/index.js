@@ -5,12 +5,12 @@ module.exports = {
 
     navLinks: [
     {
-        name: 'About Me',
-        url: '/#about',
+        name: 'Home',
+        url: '/#home',
     },
     {
-        name: 'Writing',
-        url: '/#writing',
+        name: 'About Me',
+        url: '/#about',
     },
     {
         name: 'Projects',

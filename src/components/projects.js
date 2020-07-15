@@ -4,10 +4,10 @@ import sr from '@utils/sr'
 import { srConfig } from '@config'
 import { FormattedIcon } from '@icons'
 import styled from 'styled-components'
-import { theme, mixins, Button, Heading } from '@styles'
+import { theme, mixins, Button, Heading, Section } from '@styles'
 const { colors, fontSizes, fonts } = theme
 
-const StyledContainer = styled.div`
+const StyledContainer = styled(Section)`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -107,6 +107,7 @@ const StyledMoreButton = styled(Button)`
   margin: 50px auto 0;
 `
 
+
 const Projects = ({ data }) => {
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -124,8 +125,8 @@ const Projects = ({ data }) => {
   const projectsToShow = firstSix;
 
   return (
-    <StyledContainer>
-      <Heading ref={revealTitle}>Selected Projects</Heading>
+    <StyledContainer id="projects" ref={revealTitle} >
+      <Heading>Selected Projects</Heading>
       <StyledGrid>
         <TransitionGroup className="projects">
           {projectsToShow &&
