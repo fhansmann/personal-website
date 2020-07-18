@@ -9,6 +9,7 @@ import Hero from './hero'
 import About from './about'
 import Projects from './projects'
 import Contact from './contact'
+import MailChimp from './mailchimp'
 
 
 
@@ -24,4 +25,5 @@ export {
   About,
   Projects,
   Contact,
+  MailChimp,
 }

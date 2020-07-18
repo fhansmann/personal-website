@@ -4,7 +4,7 @@ import sr from '@utils/sr'
 import { srConfig } from '@config'
 import { FormattedIcon } from '@icons'
 import styled from 'styled-components'
-import { theme, mixins, Button, Heading, Section } from '@styles'
+import { theme, mixins, Heading, Section, Link } from '@styles'
 const { colors, fontSizes, fonts } = theme
 
 const StyledContainer = styled(Section)`
@@ -103,8 +103,9 @@ const StyledTechList = styled.ul`
     }
   }
 `
-const StyledMoreButton = styled(Button)`
+const StyledMoreButton = styled(Link)`
   margin: 50px auto 0;
+  font-size: 13px;
 `
 
 
@@ -193,7 +194,7 @@ const Projects = ({ data }) => {
         </TransitionGroup>
       </StyledGrid>
 
-      <StyledMoreButton>
+      <StyledMoreButton href="https://github.com/fhansmann" target="_blank" rel="nofollow noopener noreferrer">
         Show Full Archive
       </StyledMoreButton>
     </StyledContainer>

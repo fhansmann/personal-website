@@ -9,7 +9,7 @@ const StyledBurger = styled.button`
     right: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
     width: 2rem;
     height: 2rem;
     background: transparent;
@@ -21,8 +21,9 @@ const StyledBurger = styled.button`
     span {
     width: 2rem;
     height: 0.2rem;
+    padding: 2px;
+    margin: 3px;
     background-color: ${colors.darkSlateGrey};
-    border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;

@@ -18,6 +18,7 @@ const Layout = ({children}) => (
       }
     `}
 
+
     render={({site}) => (
       <div>
         <Head metadata={site.siteMetadata} />
@@ -32,5 +33,10 @@ const Layout = ({children}) => (
     )}
   />
 )
+
+if (typeof window !== "undefined") {
+  // eslint-disable-next-line global-require
+  require("smooth-scroll")('a[href*="#"]')
+}
 
 export default Layout

@@ -3,8 +3,6 @@ title: 'About Me'
 avatar: './me.jpg'
 skills:
   - JavaScript (ES6+)
-  - HTML
-  - CSS
   - React.js
   - Gatsby
   - Next.js

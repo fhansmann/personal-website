@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import sr from '@utils/sr'
-import { srConfig, email } from '@config'
+import { srConfig } from '@config'
 import styled from 'styled-components'
 import { theme, mixins, Heading, Section } from '@styles'
+import  { MailChimp }  from '@components'
 const { colors, fontSizes, fonts } = theme
 
 const StyledContainer = styled(Section)`
@@ -34,14 +35,10 @@ const StyledTitle = styled.h4`
   font-size: 40px;
   color: ${colors.lightSlate};
 `
-const StyledEmailLink = styled.a`
-  ${mixins.bigButton};
-  margin-top: 50px;
-`
 
 const Contact = ({ data }) => {
   const { frontmatter, html } = data[0].node;
-  const { title, buttonText } = frontmatter;
+  const { title } = frontmatter;
   const revealContainer = useRef(null);
   useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
 
@@ -53,9 +50,9 @@ const Contact = ({ data }) => {
 
       <div dangerouslySetInnerHTML={{ __html: html }} />
 
-      <StyledEmailLink href={`mailto:${email}`} target="_blank" rel="nofollow noopener noreferrer">
-        {buttonText}
-      </StyledEmailLink>
+      <MailChimp/>
+
+
     </StyledContainer>
   )
 }

@@ -25,6 +25,7 @@ const StyledList = styled.ul`
     margin: 0;
     list-style: none;
 
+
 &:after {
     content: '';
     display: block;
@@ -32,6 +33,7 @@ const StyledList = styled.ul`
     height: 130px;
     margin: 0 auto;
     background-color: ${colors.darkSlateGrey};
+
     }
 
     li:last-of-type {
@@ -71,23 +73,22 @@ const Social = () => {
     return ( width > breakpoint ?
     <SocialContainer>
         <StyledList>
-        {socialMedia &&
+            {socialMedia &&
             socialMedia.map(({ url, name }, i) => (
-            <li key={i}>
-                <StyledLink
-                href={url}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                aria-label={name}>
-                <FormattedIcon name={name} />
-                </StyledLink>
-            </li>
+                <li key={i}>
+                    <StyledLink 
+                    href={url}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    aria-label={name}>
+                    <FormattedIcon name={name} />
+                    </StyledLink>
+                </li>
             ))}
         </StyledList>
     </SocialContainer>
     :
     <>
-
     </>
 )
 }

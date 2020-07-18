@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import sr from '@utils/sr'
 import { srConfig, github } from '@config'
 import styled from 'styled-components'
-import { theme, mixins, media, Section, Heading } from '@styles'
+import { theme, mixins, Section, Heading } from '@styles'
 const { colors, fontSizes, fonts } = theme
 
 const StyledContainer = styled(Section)`
@@ -12,10 +12,12 @@ const StyledContainer = styled(Section)`
 const StyledFlexContainer = styled.div`
   ${mixins.flexBetween};
   align-items: flex-start;
+  flex-wrap: wrap;
 `
 const StyledContent = styled.div`
   width: 60%;
   max-width: 480px;
+  margin-right: 10px;
   a {
     ${mixins.inlineLink};
   }
@@ -25,7 +27,7 @@ const SkillsContainer = styled.ul`
   grid-template-columns: repeat(2, minmax(140px, 200px));
   overflow: hidden;
   padding: 0;
-  margin: 20px 0 0 0;
+  margin: 20px 0 20px 0;
   list-style: none;
 `
 const Skill = styled.li`
@@ -33,7 +35,7 @@ const Skill = styled.li`
   margin-bottom: 10px;
   padding-left: 20px;
   font-family: ${fonts.SFMono};
-  font-size: 15px;
+  font-size: 13px;
   color: ${colors.slate};
   &:before {
     content: '▹';
@@ -49,8 +51,7 @@ const StyledPic = styled.div`
   width: 40%;
   max-width: 300px;
   margin-left: 60px;
-  ${media.tablet`margin: 60px auto 0;`};
-  ${media.phablet`width: 70%;`};
+  flex-grow: 0.55;
   a {
     &:focus {
       outline: 0;
@@ -59,17 +60,16 @@ const StyledPic = styled.div`
 `;
 const StyledAvatar = styled(Img)`
   position: relative;
+  border-radius: ${theme.borderRadius};
   mix-blend-mode: multiply;
   filter: grayscale(100%) contrast(1);
-  border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
 `;
 const StyledAvatarLink = styled.a`
   ${mixins.boxShadow};
   width: 100%;
   position: relative;
   border-radius: ${theme.borderRadius};
-  background-color: ${colors.lightestSlate};
+  background-color: ≈;
   margin-left: -20px;
   &:hover,
   &:focus {
@@ -98,7 +98,7 @@ const StyledAvatarLink = styled.a`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${colors.navy};
+    background-color: ${colors.offWhite};
     mix-blend-mode: screen;
   }
   &:after {

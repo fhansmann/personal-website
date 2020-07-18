@@ -1,6 +1,10 @@
 
 const config = require('./src/config');
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,
@@ -44,6 +48,14 @@ module.exports = {
         path: `${__dirname}/src/`
       },
     },
+
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+          endpoint: process.env.MAILCHIMP 
+      },
+    },
+
     'gatsby-transformer-remark',
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,

@@ -28,11 +28,11 @@ export const pageQuery = graphql`
     hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
     edges {
       node {
-          frontmatter{
-            title
+        frontmatter {
             name
             subtitle
-          }
+            title  
+            }
           html
         }
       }
@@ -82,7 +82,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
-            buttonText
           }
           html
         }

@@ -4,6 +4,8 @@ import IconTwitter from './twitter';
 import FormattedIcon from './formattedIcon';
 import IconFolder from './folder'
 import IconExternal from './external'
+import IconDev from './dev'
+import IconAvatar from './avatar'
 
 export {
   IconGithub,
@@ -12,4 +14,6 @@ export {
   FormattedIcon,
   IconFolder,
   IconExternal,
+  IconDev,
+  IconAvatar,
 };

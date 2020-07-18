@@ -1,7 +1,7 @@
 module.exports = {
     siteTitle: 'Florian Hansmann | Front-End Software Engineer',
     siteDescription:'Florian Hansmann is a Front-end software engineer based in Munich, Germany.',
-    siteUrl: 'https://google.com',
+    siteUrl: 'https://www.florians.dev',
 
     navLinks: [
     {
@@ -44,6 +44,10 @@ module.exports = {
     {
         name: 'Instagram',
         url: 'https://www.instagram.com/florianrian_/',
+    },
+    {
+        name: 'Dev',
+        url: 'https://dev.to/f_hansmann',
     },
     ],
 

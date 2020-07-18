@@ -7,6 +7,7 @@ import Main from './Main'
 import Heading from './Heading'
 import Button from './Button'
 import Section from './section'
+import Link from './Link'
 
 
 export {
@@ -19,4 +20,5 @@ export {
   Heading,
   Button,
   Section,
+  Link,
 };
