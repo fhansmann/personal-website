@@ -4,7 +4,6 @@ import { theme, Button } from '@styles'
 import styled from 'styled-components'
 const { colors, fontSizes, fonts } = theme
 
-
 const SubmitButton = styled(Button)`
     font-size: 13px;
     margin-top: 1rem;
@@ -32,22 +31,17 @@ const Wrapper = styled.div`
 
 const MailChimp = () => {
 
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault();
 
         addToMailchimp(email)
         .then((data) => {
-        console.log(data)
-        alert(data.result);
         })
         .catch(() => {
-        // Errors in here are client side
-        // Mailchimp always returns a 200
         });
     }
-
     const handleEmailChange = (event) => {
         setEmail(event.currentTarget.value);
     }
