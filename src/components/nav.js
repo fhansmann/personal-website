@@ -36,7 +36,7 @@ export const NavLink = styled(Link)`
     `
 
 const useViewport = () => {
-    const [width, setWidth] = useState(window.innerWidth)
+    const [width, setWidth] = useState(1280)
     
     useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth)
