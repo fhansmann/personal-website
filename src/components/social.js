@@ -51,7 +51,9 @@ const StyledLink = styled.a`
         width: 28px;
         height: 28px;
     }
-`;
+`
+
+typeof window !== undefined ? 
 
 const useViewport = () => {
     const [width, setWidth] = useState(1280)
@@ -64,6 +66,7 @@ const useViewport = () => {
 
     return { width };
     }
+
 
 const Social = () => {
 
@@ -92,4 +95,7 @@ const Social = () => {
     </>
 )
 }
+
+: null
+
 export default Social
