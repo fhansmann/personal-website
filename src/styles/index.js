@@ -1,6 +1,5 @@
 import theme from './theme'
 import GlobalStyle from './GlobalStyle'
-import media from './media'
 import fonts from './fonts'
 import mixins from './mixins'
 import Main from './Main'
@@ -13,7 +12,6 @@ import Link from './Link'
 export {
   theme,
   GlobalStyle,
-  media,
   fonts,
   mixins,
   Main,

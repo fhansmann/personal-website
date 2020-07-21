@@ -1,8 +1,14 @@
 import React from "react"
 import { graphql } from 'gatsby'
-import {Layout, Hero, About, Projects, Contact} from '@components'
 import styled from 'styled-components'
 import { Main } from '@styles'
+import loadable from '@loadable/component'
+
+const Layout = loadable(() => import('../components/layout'))
+const Hero = loadable(() => import('../components/hero'))
+const About = loadable(() => import('../components/about'))
+const Projects = loadable(() => import('../components/projects'))
+const Contact = loadable(() => import('../components/contact'))
 
 
 const MainContainer = styled(Main)`
@@ -10,15 +16,15 @@ const MainContainer = styled(Main)`
 `
 
 const IndexPage = ({data}) => (
-    <Layout>
-        <MainContainer>
-          <Hero data={data.hero.edges}/>
-          <About data={data.about.edges}/>
-          <Projects data={data.projects.edges}/>
-          <Contact data={data.contact.edges}/>
-        </MainContainer>
-    </Layout>
-)
+  <Layout>
+      <MainContainer>
+        <Hero data={data.hero.edges}/>
+        <About data={data.about.edges}/>
+        <Projects data={data.projects.edges}/>
+        <Contact data={data.contact.edges}/>
+      </MainContainer>
+  </Layout>
+  )
 
 
 export default IndexPage 

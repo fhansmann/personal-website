@@ -101,7 +101,7 @@ const Hero = ({ data }) => {
         <TransitionGroup component={null}>
             {isMounted &&
             <CSSTransition classNames="fadeup" >
-              <StyledPicture>
+              <StyledPicture style={{ transitionDelay: '700ms' }}>
                 <FormattedIcon name={"Avatar"} />
               </StyledPicture>
             </CSSTransition>

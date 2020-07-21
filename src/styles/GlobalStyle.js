@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
-import media from './media';
 import * as fontFamilies from './fonts';
 const { colors, fontSizes, fonts } = theme;
 
@@ -155,7 +154,6 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.3;
     font-family: ${fonts.Calibre};
     font-size: ${fontSizes.xlarge};
-    ${media.phablet`font-size: ${fontSizes.large};`}
 
     &.hidden {
       overflow: hidden;

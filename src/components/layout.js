@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import { Head, Nav, Social, Footer } from '@components'
 import { GlobalStyle } from '@styles'
 
-
 const Layout = ({children}) => (
   <StaticQuery
     query={graphql`

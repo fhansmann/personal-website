@@ -3,6 +3,7 @@ import { socialMedia } from '@config'
 import { FormattedIcon } from '@icons'
 import styled from 'styled-components'
 import { theme } from '@styles'
+import { window } from 'browser-monads'
 const { colors } = theme
 
 const SocialContainer = styled.div`
@@ -53,7 +54,7 @@ const StyledLink = styled.a`
     }
 `
 
-typeof window !== undefined ? 
+ 
 
 const useViewport = () => {
     const [width, setWidth] = useState(1280)
@@ -96,6 +97,5 @@ const Social = () => {
 )
 }
 
-: null
 
 export default Social

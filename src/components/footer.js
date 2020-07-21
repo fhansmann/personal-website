@@ -36,7 +36,7 @@ const Footer = () => (
             href="https://github.com/fhansmann"
             target="_blank"
             rel="nofollow noopener noreferrer">
-            <BottomText>Florian Hansmann | 2020</BottomText>
+            <BottomText>Florian Hansmann - 2020 | Built with Gatsby | Hosted on Netlify</BottomText>
             </GithubLink>
         </Copy>
     </FooterContainer>

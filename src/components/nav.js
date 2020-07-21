@@ -35,8 +35,6 @@ export const NavLink = styled(Link)`
     padding: 12px 10px;
     `
 
-typeof window !== undefined ? 
-
 const useViewport = () => {
     const [width, setWidth] = useState(1280)
     
@@ -110,7 +108,5 @@ const Nav = () => {
     </Navbar>
     )
 }
-
-: null
 
 export default Nav
