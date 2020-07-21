@@ -7,8 +7,7 @@ tech:
   - Gatsby.js
   - Styled Components
   - Netlify
-company: ''
 showInProjects: true
 ---
 
-First iteration of my personal portfolio website built with Gatsby.js with all assets being hosted on Netlify.
+First iteration of my personal portfolio website built with Gatsby.js.

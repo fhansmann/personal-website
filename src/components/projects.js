@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { theme, mixins, Heading, Section, Link } from '@styles'
 const { colors, fontSizes, fonts } = theme
 
+
 const StyledContainer = styled(Section)`
   display: flex;
   justify-content: center;
@@ -15,11 +16,10 @@ const StyledContainer = styled(Section)`
   margin-top: 50px;
 `
 const StyledGrid = styled.div`
-  margin-top: 20px;
-
+  margin-top: 50px;
   .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
     position: relative;
   }
